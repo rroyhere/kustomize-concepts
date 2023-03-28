@@ -1,0 +1,16 @@
+bases:
+- ../../base
+commonLabels:
+  environment: QA
+#api image is updated in the api-deployment to use caddy docker image through an inline JSON6902 patch  in below     
+patches:
+- target:
+    kind: Deployment
+    name: api-deployment
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: caddy
+
+#after the change is done, apply it using 
+#kubectl apply -k /root/code/k8s/overlays/QA

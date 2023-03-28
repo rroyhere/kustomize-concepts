@@ -1,0 +1,9 @@
+bases:
+- ../../base
+commonLabels:
+  environment: staging
+#added new mysql deployment with replica 1 and a new kustomization entry as below
+resources:
+- mysql-depl.yaml
+#apply this using below command:
+#kubectl apply -k /root/code/k8s/overlays/staging

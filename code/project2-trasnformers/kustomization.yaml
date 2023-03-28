@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- db/
+- monitoring/
+- nginx/
+
+commonLabels:
+  sandbox: dev
+
+#below will tansform all postgres to mysql in all resources
+images:
+- name: postgres
+  newName: mysql

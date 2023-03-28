@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- nginx-depl.yaml
+- nginx-service.yaml
+#below transformer will transform all nginx images to new tag 1.23 inside nginx deploy directory
+images:
+- name: nginx
+  newTag: "1.23"
